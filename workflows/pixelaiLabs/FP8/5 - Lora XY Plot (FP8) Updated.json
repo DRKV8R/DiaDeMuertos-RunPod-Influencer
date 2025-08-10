@@ -1,0 +1,2806 @@
+{
+  "id": "fe383350-dc7a-42bc-b881-b3c727c1a12a",
+  "revision": 0,
+  "last_node_id": 62,
+  "last_link_id": 67,
+  "nodes": [
+    {
+      "id": 24,
+      "type": "PrimitiveNode",
+      "pos": [
+        3570,
+        -480
+      ],
+      "size": [
+        283.36505126953125,
+        85.41231536865234
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "slot_index": 0,
+          "links": [
+            27,
+            30
+          ]
+        }
+      ],
+      "title": "width",
+      "properties": {
+        "Run widget replace on values": false,
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1024,
+        "fixed"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 25,
+      "type": "PrimitiveNode",
+      "pos": [
+        3280,
+        -480
+      ],
+      "size": [
+        294.4551086425781,
+        90.53084564208984
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "slot_index": 0,
+          "links": [
+            28,
+            31
+          ]
+        }
+      ],
+      "title": "height",
+      "properties": {
+        "Run widget replace on values": false,
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1024,
+        "fixed"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 26,
+      "type": "workflow>Image gen sampler",
+      "pos": [
+        3270,
+        -670
+      ],
+      "size": [
+        584.7413940429688,
+        150
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            38
+          ]
+        },
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            39
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "workflow/Image gen sampler",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "euler",
+        "simple",
+        20,
+        1
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 27,
+      "type": "Label (rgthree)",
+      "pos": [
+        3250,
+        -1590
+      ],
+      "size": [
+        1404.78515625,
+        120
+      ],
+      "flags": {
+        "allow_interaction": true
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "FP8 LORA XY COMPARE",
+      "properties": {
+        "fontSize": 120,
+        "fontFamily": "Arial",
+        "fontColor": "#ffffff",
+        "textAlign": "left",
+        "backgroundColor": "red",
+        "padding": 0,
+        "borderRadius": 0,
+        "widget_ue_connectable": {}
+      },
+      "color": "#fff0",
+      "bgcolor": "#fff0"
+    },
+    {
+      "id": 28,
+      "type": "CLIPTextEncode",
+      "pos": [
+        3260,
+        -950
+      ],
+      "size": [
+        594.664794921875,
+        242.8584747314453
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 26
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            33
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 31,
+      "type": "workflow>Param",
+      "pos": [
+        3270,
+        -360
+      ],
+      "size": [
+        591.0955810546875,
+        174
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 27
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 28
+        }
+      ],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            36
+          ]
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            40
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "workflow/Param",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {
+          "width": true,
+          "height": true
+        }
+      },
+      "widgets_values": [
+        154162444111,
+        "fixed",
+        1024,
+        1024,
+        1024
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 34,
+      "type": "ModelSamplingFlux",
+      "pos": [
+        3920,
+        -1370
+      ],
+      "size": [
+        315,
+        170
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 29
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 30
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 31
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            25,
+            32
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "ModelSamplingFlux",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {
+          "width": true,
+          "height": true
+        }
+      },
+      "widgets_values": [
+        1.15,
+        0.5,
+        1024,
+        1024
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 35,
+      "type": "BasicGuider",
+      "pos": [
+        3930,
+        -1040
+      ],
+      "size": [
+        222.3482666015625,
+        46
+      ],
+      "flags": {},
+      "order": 32,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 32
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 33
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "slot_index": 0,
+          "links": [
+            37
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "BasicGuider",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 36,
+      "type": "VAEDecode",
+      "pos": [
+        3940,
+        -1040
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 37,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 34
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 35
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            41
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "VAEDecode",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 37,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        3930,
+        -1210
+      ],
+      "size": [
+        311.076904296875,
+        126.52272033691406
+      ],
+      "flags": {},
+      "order": 35,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 36
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 37
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 38
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 39
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 40
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            34
+          ]
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "SamplerCustomAdvanced",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 38,
+      "type": "VAELoader",
+      "pos": [
+        3930,
+        -1050
+      ],
+      "size": [
+        309.3247375488281,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "VAELoader",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 39,
+      "type": "ttN advPlot images",
+      "pos": [
+        4250,
+        -1360
+      ],
+      "size": [
+        362.1529541015625,
+        372.3804626464844
+      ],
+      "flags": {},
+      "order": 39,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 41
+        },
+        {
+          "name": "adv_xyPlot",
+          "shape": 7,
+          "type": "ADV_XYPLOT",
+          "link": 42
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            46
+          ]
+        },
+        {
+          "name": "plot_image",
+          "type": "IMAGE",
+          "slot_index": 1,
+          "links": [
+            45
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_tinyterranodes",
+        "ver": "c669e6cff81ba44cce91c9eee3236c1a64725394",
+        "Node name for S&R": "ttN advPlot images",
+        "ttNnodeVersion": "1.0.0",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        "Preview",
+        "ComfyUI",
+        "png",
+        true
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 40,
+      "type": "ttN advanced xyPlot",
+      "pos": [
+        3930,
+        -960
+      ],
+      "size": [
+        681.9749755859375,
+        292
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "x_plot",
+          "type": "STRING",
+          "widget": {
+            "name": "x_plot"
+          },
+          "link": 43
+        },
+        {
+          "name": "y_plot",
+          "type": "STRING",
+          "widget": {
+            "name": "y_plot"
+          },
+          "link": 44
+        }
+      ],
+      "outputs": [
+        {
+          "name": "adv_xyPlot",
+          "type": "ADV_XYPLOT",
+          "slot_index": 0,
+          "links": [
+            42
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_tinyterranodes",
+        "ver": "c669e6cff81ba44cce91c9eee3236c1a64725394",
+        "Node name for S&R": "ttN advanced xyPlot",
+        "ttNnodeVersion": "1.2.0",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {
+          "x_plot": true,
+          "y_plot": true
+        }
+      },
+      "widgets_values": [
+        0,
+        false,
+        false,
+        "",
+        "",
+        "",
+        false
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 41,
+      "type": "SaveImage",
+      "pos": [
+        3930,
+        -640
+      ],
+      "size": [
+        655.5525512695312,
+        471.4891052246094
+      ],
+      "flags": {},
+      "order": 42,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 45
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "SaveImage",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 42,
+      "type": "SaveImage",
+      "pos": [
+        4630,
+        -1370
+      ],
+      "size": [
+        1820.447998046875,
+        2160.048828125
+      ],
+      "flags": {},
+      "order": 41,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 46
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "SaveImage",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 43,
+      "type": "LoraLoader",
+      "pos": [
+        3260,
+        -1120
+      ],
+      "size": [
+        596.9752807617188,
+        126
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 50
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 49
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            29
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            26
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "LoraLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "realmillie-000001.safetensors",
+        1,
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 44,
+      "type": "Note",
+      "pos": [
+        3930,
+        -100
+      ],
+      "size": [
+        660.2649536132812,
+        887.560546875
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "\n----> PUT YOUR PROMPT HERE\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n----> SELECT ALL THE LORAS YOU WANT TO TEST HERE"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 48,
+      "type": "DualCLIPLoaderGGUF",
+      "pos": [
+        3260,
+        -1260
+      ],
+      "size": [
+        591.9825439453125,
+        106
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            49
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-GGUF",
+        "ver": "298192ed60f8ca821c6fe5f8030cae23424cada5",
+        "Node name for S&R": "DualCLIPLoaderGGUF",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors",
+        "t5-v1_1-xxl-encoder-Q8_0.gguf",
+        "flux"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 47,
+      "type": "UnetLoaderGGUF",
+      "pos": [
+        3270,
+        -1370
+      ],
+      "size": [
+        583.1893920898438,
+        75.58618927001953
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            50
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-GGUF",
+        "ver": "298192ed60f8ca821c6fe5f8030cae23424cada5",
+        "Node name for S&R": "UnetLoaderGGUF",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "flux1-dev-Q8_0.gguf"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 33,
+      "type": "ttN advPlot combo",
+      "pos": [
+        3270,
+        390
+      ],
+      "size": [
+        593.62451171875,
+        425.3941345214844
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "plot_text",
+          "type": "STRING",
+          "slot_index": 0,
+          "links": [
+            43
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_tinyterranodes",
+        "ver": "c669e6cff81ba44cce91c9eee3236c1a64725394",
+        "Node name for S&R": "ttN advPlot combo",
+        "ttNnodeVersion": "1.1.0",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "[43] - Load LoRA",
+        "lora_name",
+        "select",
+        "Select widget for options",
+        "Select widget for options",
+        "milliealcock.safetensors",
+        "milliealcock-000001.safetensors\nmilliealcock-000002.safetensors\nmilliealcock-000003.safetensors\nmilliealcock-000004.safetensors\nmilliealcock-000005.safetensors\nmilliealcock-000006.safetensors\nmilliealcock-000007.safetensors\nmilliealcock.safetensors",
+        "Values",
+        "<1:v_label>\n[1983:lora_name='milliealcock-000001.safetensors']\n<2:v_label>\n[1983:lora_name='milliealcock-000002.safetensors']\n<3:v_label>\n[1983:lora_name='milliealcock-000003.safetensors']\n<4:v_label>\n[1983:lora_name='milliealcock-000004.safetensors']\n<5:v_label>\n[1983:lora_name='milliealcock-000005.safetensors']\n<6:v_label>\n[1983:lora_name='milliealcock-000006.safetensors']\n<7:v_label>\n[1983:lora_name='milliealcock-000007.safetensors']\n<8:v_label>\n[1983:lora_name='milliealcock.safetensors']"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 32,
+      "type": "ttN advPlot string",
+      "pos": [
+        3260,
+        -160
+      ],
+      "size": [
+        603.8729248046875,
+        514.4833984375
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "plot_text",
+          "type": "STRING",
+          "slot_index": 0,
+          "links": [
+            44
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_tinyterranodes",
+        "ver": "c669e6cff81ba44cce91c9eee3236c1a64725394",
+        "Node name for S&R": "ttN advPlot string",
+        "ttNnodeVersion": "1.1.0",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "[28] - CLIP Text Encode (Prompt)",
+        "text",
+        false,
+        "",
+        "portrait of Millie Alcock's gaze meets the viewer's, inviting entry into this breathtaking serene wonderland. She has beautiful long hair and green eyes. A lush velvet-like forest floor and ancient trees form the background, with intricate wildflowers sprouting throughout, subtly illuminated by the fading sunset casting long, golden shadows across the scene.",
+        "\\n",
+        "Values",
+        "<1:v_label>\n[1984:text='portrait of Millie Alcock's gaze meets the viewer's, inviting entry into this breathtaking serene wonderland. She has beautiful long hair and green eyes. A lush velvet-like forest floor and ancient trees form the background, with intricate wildflowers sprouting throughout, subtly illuminated by the fading sunset casting long, golden shadows across the scene.']"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 46,
+      "type": "Fast Groups Bypasser (rgthree)",
+      "pos": [
+        2830,
+        -1420
+      ],
+      "size": [
+        365.2802734375,
+        82
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "OPT_CONNECTION",
+          "name": "OPT_CONNECTION",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "matchColors": "",
+        "matchTitle": "GGUF LORA XY COMPARE",
+        "showNav": true,
+        "sort": "position",
+        "customSortAlphabet": "",
+        "toggleRestriction": "default",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 49,
+      "type": "Fast Groups Bypasser (rgthree)",
+      "pos": [
+        -6534.51171875,
+        -1379.7364501953125
+      ],
+      "size": [
+        365.2802734375,
+        82
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "OPT_CONNECTION",
+          "name": "OPT_CONNECTION",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "matchColors": "",
+        "matchTitle": "FP8 LORA XY COMPARE",
+        "showNav": true,
+        "sort": "position",
+        "customSortAlphabet": "",
+        "toggleRestriction": "default",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 50,
+      "type": "Label (rgthree)",
+      "pos": [
+        -6128.4765625,
+        -1700.51318359375
+      ],
+      "size": [
+        1092.1875,
+        150
+      ],
+      "flags": {
+        "pinned": true,
+        "allow_interaction": false
+      },
+      "order": 11,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [],
+      "title": "PixelaiLabs.com",
+      "properties": {
+        "fontSize": 150,
+        "fontFamily": "Arial",
+        "fontColor": "#ffffff",
+        "textAlign": "left",
+        "backgroundColor": "",
+        "padding": 0,
+        "borderRadius": 0,
+        "widget_ue_connectable": {}
+      },
+      "color": "#fff0",
+      "bgcolor": "#fff0"
+    },
+    {
+      "id": 22,
+      "type": "Label (rgthree)",
+      "pos": [
+        -6130.9853515625,
+        -1533.18994140625
+      ],
+      "size": [
+        1562.87841796875,
+        75
+      ],
+      "flags": {
+        "pinned": true,
+        "allow_interaction": false
+      },
+      "order": 12,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [],
+      "title": "LORA XY PLOT WORKFLOW 07-18-25 (FP8) ",
+      "properties": {
+        "fontSize": 75,
+        "fontFamily": "Arial",
+        "fontColor": "#ffffff",
+        "textAlign": "left",
+        "backgroundColor": "",
+        "padding": 0,
+        "borderRadius": 0,
+        "widget_ue_connectable": {}
+      },
+      "color": "#fff0",
+      "bgcolor": "#fff0"
+    },
+    {
+      "id": 45,
+      "type": "Label (rgthree)",
+      "pos": [
+        3250,
+        -1590
+      ],
+      "size": [
+        1531.34765625,
+        120
+      ],
+      "flags": {
+        "allow_interaction": true
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "GGUF LORA XY COMPARE",
+      "properties": {
+        "fontSize": 120,
+        "fontFamily": "Arial",
+        "fontColor": "#ffffff",
+        "textAlign": "left",
+        "backgroundColor": "red",
+        "padding": 0,
+        "borderRadius": 0,
+        "widget_ue_connectable": {}
+      },
+      "color": "#fff0",
+      "bgcolor": "#fff0"
+    },
+    {
+      "id": 53,
+      "type": "Note",
+      "pos": [
+        -6934.38134765625,
+        -1180.8912353515625
+      ],
+      "size": [
+        792.2989501953125,
+        756.6251831054688
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "In case of missing models:\n\n1 - ComfyUI/models/unet\n\nFP8:\n\nhttps://huggingface.co/datasets/simwalo/FluxDevFP8/blob/main/flux1-dev-fp8.safetensors\n\nGGUF:\n\nhttps://huggingface.co/city96/FLUX.1-dev-gguf/tree/main\n\n\n2 - ComfyUI/models/clip\n\nFP8:\n\nhttps://huggingface.co/datasets/simwalo/FluxDevFP8/blob/main/t5xxl_fp8_e4m3fn_scaled.safetensors\n\nhttps://huggingface.co/datasets/simwalo/FluxDevFP8/blob/main/clip_l.safetensors\n\nGGUF:\n\nhttps://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/tree/main\n\n\n3 - ComfyUI/models/vae\n\nhttps://huggingface.co/datasets/simwalo/FluxDevFP8/blob/main/ae.safetensors\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 20,
+      "type": "LoraLoader",
+      "pos": [
+        -6115.056640625,
+        -1067.2471923828125
+      ],
+      "size": [
+        596.9752807617188,
+        126
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 53
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 54
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            57
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "LoraLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "maya\\Maya_Lora_v1_000000500.safetensors",
+        1,
+        1
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 60,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        -5353.333984375,
+        -1069.3074951171875
+      ],
+      "size": [
+        197.712890625,
+        26
+      ],
+      "flags": {},
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 61
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            63
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "ConditioningZeroOut",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 5,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -6111.68017578125,
+        -914.0610961914062
+      ],
+      "size": [
+        594.664794921875,
+        242.8584747314453
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            61,
+            65
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 56,
+      "type": "UNETLoader",
+      "pos": [
+        -6105.61279296875,
+        -1346.098388671875
+      ],
+      "size": [
+        599.5831909179688,
+        82
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            53
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "UNETLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "flux1-dev-fp8.safetensors",
+        "default"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 57,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -6105.2978515625,
+        -1232.5186767578125
+      ],
+      "size": [
+        594.694580078125,
+        130
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            54
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "DualCLIPLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "t5xxl_fp8_e4m3fn_scaled.safetensors",
+        "clip_l.safetensors",
+        "flux",
+        "default"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 62,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -5395.2216796875,
+        -959.32421875
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            67
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "EmptyLatentImage",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 9,
+      "type": "ttN advPlot string",
+      "pos": [
+        -6105.8681640625,
+        -619.8015747070312
+      ],
+      "size": [
+        589.206298828125,
+        505.9278564453125
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "plot_text",
+          "type": "STRING",
+          "slot_index": 0,
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_tinyterranodes",
+        "ver": "c669e6cff81ba44cce91c9eee3236c1a64725394",
+        "Node name for S&R": "ttN advPlot string",
+        "ttNnodeVersion": "1.1.0",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "[5] - CLIP Text Encode (Prompt)",
+        "text",
+        false,
+        "",
+        "m4y4 her facebook profile picture wearing a bikini",
+        "\\n",
+        "Values",
+        "<1:v_label>\n[5:text='m4y4 her facebook profile picture wearing a bikini']"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 52,
+      "type": "Note",
+      "pos": [
+        -5478.81298828125,
+        -539.8807983398438
+      ],
+      "size": [
+        525.0219116210938,
+        122.89796447753906
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "\n\n<==== Add positive prompt here"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 61,
+      "type": "FluxGuidance",
+      "pos": [
+        -5394.791015625,
+        -1182.1787109375
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 65
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            66
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "FluxGuidance",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        2.5
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 13,
+      "type": "VAEDecode",
+      "pos": [
+        -4392.306640625,
+        -1183.45654296875
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 58
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "VAEDecode",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 17,
+      "type": "ttN advanced xyPlot",
+      "pos": [
+        -6093.45556640625,
+        -55.0042610168457
+      ],
+      "size": [
+        578.1866455078125,
+        292
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "x_plot",
+          "type": "STRING",
+          "widget": {
+            "name": "x_plot"
+          },
+          "link": 19
+        },
+        {
+          "name": "y_plot",
+          "type": "STRING",
+          "widget": {
+            "name": "y_plot"
+          },
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "adv_xyPlot",
+          "type": "ADV_XYPLOT",
+          "slot_index": 0,
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_tinyterranodes",
+        "ver": "c669e6cff81ba44cce91c9eee3236c1a64725394",
+        "Node name for S&R": "ttN advanced xyPlot",
+        "ttNnodeVersion": "1.2.0",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {
+          "x_plot": true,
+          "y_plot": true
+        }
+      },
+      "widgets_values": [
+        0,
+        false,
+        false,
+        "",
+        "",
+        "",
+        false
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 10,
+      "type": "ttN advPlot combo",
+      "pos": [
+        -6083.87060546875,
+        306.1439208984375
+      ],
+      "size": [
+        584.7511596679688,
+        423.915283203125
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "plot_text",
+          "type": "STRING",
+          "slot_index": 0,
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_tinyterranodes",
+        "ver": "c669e6cff81ba44cce91c9eee3236c1a64725394",
+        "Node name for S&R": "ttN advPlot combo",
+        "ttNnodeVersion": "1.1.0",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "[20] - Load LoRA",
+        "lora_name",
+        "select",
+        "Select widget for options",
+        "Select widget for options",
+        "maya\\Maya_Lora_v1_000002500.safetensors",
+        "maya\\Maya_Lora_v1_000000500.safetensors\nmaya\\Maya_Lora_v1_000001000.safetensors\nmaya\\Maya_Lora_v1_000001500.safetensors\nmaya\\Maya_Lora_v1_000002000.safetensors\nmaya\\Maya_Lora_v1_000002500.safetensors",
+        "Values",
+        "<1:v_label>\n[20:lora_name='maya\\Maya_Lora_v1_000000500.safetensors']\n<2:v_label>\n[20:lora_name='maya\\Maya_Lora_v1_000001000.safetensors']"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 51,
+      "type": "Note",
+      "pos": [
+        -5421.16259765625,
+        441.3662414550781
+      ],
+      "size": [
+        520.6220092773438,
+        143.79800415039062
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 21,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "\n\n\n<==== delete Maya's LoRAs with your trained one.\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 16,
+      "type": "ttN advPlot images",
+      "pos": [
+        -4811.94873046875,
+        -713.3776245117188
+      ],
+      "size": [
+        362.1529541015625,
+        386
+      ],
+      "flags": {},
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 17
+        },
+        {
+          "name": "adv_xyPlot",
+          "shape": 7,
+          "type": "ADV_XYPLOT",
+          "link": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            22
+          ]
+        },
+        {
+          "name": "plot_image",
+          "type": "IMAGE",
+          "slot_index": 1,
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_tinyterranodes",
+        "ver": "c669e6cff81ba44cce91c9eee3236c1a64725394",
+        "Node name for S&R": "ttN advPlot images",
+        "ttNnodeVersion": "1.0.0",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        "Preview",
+        "ComfyUI",
+        "png",
+        true
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 59,
+      "type": "KSamplerAdvanced",
+      "pos": [
+        -4815.828125,
+        -1189.276611328125
+      ],
+      "size": [
+        304.748046875,
+        334
+      ],
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 57
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 66
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 63
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 67
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            58
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "KSamplerAdvanced",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        "enable",
+        540510431989610,
+        "randomize",
+        20,
+        1,
+        "deis",
+        "beta",
+        0,
+        10000,
+        "disable"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 15,
+      "type": "VAELoader",
+      "pos": [
+        -4392.2373046875,
+        -1079.7001953125
+      ],
+      "size": [
+        309.3247375488281,
+        58
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "VAELoader",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 19,
+      "type": "SaveImage",
+      "pos": [
+        -4031.43505859375,
+        -1337.5296630859375
+      ],
+      "size": [
+        1116.6793212890625,
+        2147.3681640625
+      ],
+      "flags": {},
+      "order": 43,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 22
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "SaveImage",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "XYPlot/XYPlot"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 18,
+      "type": "SaveImage",
+      "pos": [
+        -4807.0712890625,
+        -234.5733184814453
+      ],
+      "size": [
+        728.039794921875,
+        657.530029296875
+      ],
+      "flags": {},
+      "order": 44,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 21
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "SaveImage",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    }
+  ],
+  "links": [
+    [
+      2,
+      20,
+      1,
+      5,
+      0,
+      "CLIP"
+    ],
+    [
+      11,
+      15,
+      0,
+      13,
+      1,
+      "VAE"
+    ],
+    [
+      17,
+      13,
+      0,
+      16,
+      0,
+      "IMAGE"
+    ],
+    [
+      18,
+      17,
+      0,
+      16,
+      1,
+      "ADV_XYPLOT"
+    ],
+    [
+      19,
+      10,
+      0,
+      17,
+      0,
+      "STRING"
+    ],
+    [
+      20,
+      9,
+      0,
+      17,
+      1,
+      "STRING"
+    ],
+    [
+      21,
+      16,
+      1,
+      18,
+      0,
+      "IMAGE"
+    ],
+    [
+      22,
+      16,
+      0,
+      19,
+      0,
+      "IMAGE"
+    ],
+    [
+      25,
+      34,
+      0,
+      26,
+      0,
+      "MODEL"
+    ],
+    [
+      26,
+      43,
+      1,
+      28,
+      0,
+      "CLIP"
+    ],
+    [
+      27,
+      24,
+      0,
+      31,
+      0,
+      "INT"
+    ],
+    [
+      28,
+      25,
+      0,
+      31,
+      1,
+      "INT"
+    ],
+    [
+      29,
+      43,
+      0,
+      34,
+      0,
+      "MODEL"
+    ],
+    [
+      30,
+      24,
+      0,
+      34,
+      1,
+      "INT"
+    ],
+    [
+      31,
+      25,
+      0,
+      34,
+      2,
+      "INT"
+    ],
+    [
+      32,
+      34,
+      0,
+      35,
+      0,
+      "MODEL"
+    ],
+    [
+      33,
+      28,
+      0,
+      35,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      34,
+      37,
+      0,
+      36,
+      0,
+      "LATENT"
+    ],
+    [
+      35,
+      38,
+      0,
+      36,
+      1,
+      "VAE"
+    ],
+    [
+      36,
+      31,
+      0,
+      37,
+      0,
+      "NOISE"
+    ],
+    [
+      37,
+      35,
+      0,
+      37,
+      1,
+      "GUIDER"
+    ],
+    [
+      38,
+      26,
+      0,
+      37,
+      2,
+      "SAMPLER"
+    ],
+    [
+      39,
+      26,
+      1,
+      37,
+      3,
+      "SIGMAS"
+    ],
+    [
+      40,
+      31,
+      1,
+      37,
+      4,
+      "LATENT"
+    ],
+    [
+      41,
+      36,
+      0,
+      39,
+      0,
+      "IMAGE"
+    ],
+    [
+      42,
+      40,
+      0,
+      39,
+      1,
+      "ADV_XYPLOT"
+    ],
+    [
+      43,
+      33,
+      0,
+      40,
+      0,
+      "STRING"
+    ],
+    [
+      44,
+      32,
+      0,
+      40,
+      1,
+      "STRING"
+    ],
+    [
+      45,
+      39,
+      1,
+      41,
+      0,
+      "IMAGE"
+    ],
+    [
+      46,
+      39,
+      0,
+      42,
+      0,
+      "IMAGE"
+    ],
+    [
+      49,
+      48,
+      0,
+      43,
+      1,
+      "CLIP"
+    ],
+    [
+      50,
+      47,
+      0,
+      43,
+      0,
+      "MODEL"
+    ],
+    [
+      53,
+      56,
+      0,
+      20,
+      0,
+      "MODEL"
+    ],
+    [
+      54,
+      57,
+      0,
+      20,
+      1,
+      "CLIP"
+    ],
+    [
+      57,
+      20,
+      0,
+      59,
+      0,
+      "MODEL"
+    ],
+    [
+      58,
+      59,
+      0,
+      13,
+      0,
+      "LATENT"
+    ],
+    [
+      61,
+      5,
+      0,
+      60,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      63,
+      60,
+      0,
+      59,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      65,
+      5,
+      0,
+      61,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      66,
+      61,
+      0,
+      59,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      67,
+      62,
+      0,
+      59,
+      3,
+      "LATENT"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "FP8 LORA XY COMPARE",
+      "bounding": [
+        -6131.9609375,
+        -1418.26416015625,
+        3252.8271484375,
+        2272.344482421875
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "GGUF LORA XY COMPARE",
+      "bounding": [
+        3250,
+        -1450,
+        3252.8271484375,
+        2272.344482421875
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.3186308177103573,
+      "offset": [
+        7408.586625036159,
+        1836.6494034030181
+      ]
+    },
+    "node_versions": {
+      "comfy-core": "0.3.14",
+      "ComfyUI_tinyterraNodes": "b292f8e88314637aac96a3979831fd6b4f3862ac",
+      "ComfyUI-GGUF": "5875c52f59baca3a9372d68c43a3775e21846fe0"
+    },
+    "ue_links": [],
+    "groupNodes": {
+      "Image gen sampler": {
+        "nodes": [
+          {
+            "id": -1,
+            "type": "KSamplerSelect",
+            "pos": {
+              "0": -5990,
+              "1": -593
+            },
+            "size": {
+              "0": 315,
+              "1": 58
+            },
+            "flags": {},
+            "order": 80,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "sampler_name",
+                "localized_name": "sampler_name",
+                "type": "COMBO",
+                "widget": {
+                  "name": "sampler_name"
+                },
+                "boundingRect": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "SAMPLER",
+                "type": "SAMPLER",
+                "links": [],
+                "localized_name": "SAMPLER"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "KSamplerSelect"
+            },
+            "widgets_values": [
+              "euler"
+            ],
+            "index": 0
+          },
+          {
+            "id": -1,
+            "type": "BasicScheduler",
+            "pos": {
+              "0": -5980.05224609375,
+              "1": -508.6789245605469
+            },
+            "size": {
+              "0": 315,
+              "1": 106
+            },
+            "flags": {},
+            "order": 153,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "model",
+                "type": "MODEL",
+                "link": null,
+                "slot_index": 0,
+                "localized_name": "model"
+              },
+              {
+                "name": "scheduler",
+                "localized_name": "scheduler",
+                "type": "COMBO",
+                "widget": {
+                  "name": "scheduler"
+                },
+                "boundingRect": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "link": null
+              },
+              {
+                "name": "steps",
+                "localized_name": "steps",
+                "type": "INT",
+                "widget": {
+                  "name": "steps"
+                },
+                "boundingRect": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "link": null
+              },
+              {
+                "name": "denoise",
+                "localized_name": "denoise",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "denoise"
+                },
+                "boundingRect": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "SIGMAS",
+                "type": "SIGMAS",
+                "links": [],
+                "localized_name": "SIGMAS"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "BasicScheduler"
+            },
+            "widgets_values": [
+              "simple",
+              20,
+              1
+            ],
+            "index": 1
+          }
+        ],
+        "links": [
+          [
+            null,
+            0,
+            1,
+            0,
+            119,
+            "MODEL"
+          ]
+        ],
+        "external": [
+          [
+            0,
+            0,
+            "SAMPLER"
+          ],
+          [
+            1,
+            0,
+            "SIGMAS"
+          ]
+        ]
+      },
+      "Param": {
+        "nodes": [
+          {
+            "id": -1,
+            "type": "RandomNoise",
+            "pos": {
+              "0": -5992,
+              "1": 42
+            },
+            "size": {
+              "0": 315,
+              "1": 82
+            },
+            "flags": {},
+            "order": 77,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "noise_seed",
+                "localized_name": "noise_seed",
+                "type": "INT",
+                "widget": {
+                  "name": "noise_seed"
+                },
+                "boundingRect": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "NOISE",
+                "type": "NOISE",
+                "links": [],
+                "localized_name": "NOISE"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "RandomNoise"
+            },
+            "widgets_values": [
+              998158692601811,
+              "fixed"
+            ],
+            "color": "#2a363b",
+            "bgcolor": "#3f5159",
+            "index": 0
+          },
+          {
+            "id": -1,
+            "type": "EmptySD3LatentImage",
+            "pos": {
+              "0": -6039,
+              "1": -280
+            },
+            "size": {
+              "0": 419.3044128417969,
+              "1": 95.46627044677734
+            },
+            "flags": {},
+            "order": 112,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "width",
+                "type": "INT",
+                "link": null,
+                "widget": {
+                  "name": "width"
+                },
+                "localized_name": "width"
+              },
+              {
+                "name": "height",
+                "type": "INT",
+                "link": null,
+                "widget": {
+                  "name": "height"
+                },
+                "localized_name": "height"
+              },
+              {
+                "name": "batch_size",
+                "localized_name": "batch_size",
+                "type": "INT",
+                "widget": {
+                  "name": "batch_size"
+                },
+                "boundingRect": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "LATENT",
+                "type": "LATENT",
+                "links": [],
+                "slot_index": 0,
+                "localized_name": "LATENT"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "EmptySD3LatentImage"
+            },
+            "widgets_values": [
+              1024,
+              1024,
+              1
+            ],
+            "index": 1
+          }
+        ],
+        "links": [
+          [
+            null,
+            0,
+            1,
+            0,
+            120,
+            "INT"
+          ],
+          [
+            null,
+            0,
+            1,
+            1,
+            121,
+            "INT"
+          ]
+        ],
+        "external": [
+          [
+            0,
+            0,
+            "NOISE"
+          ],
+          [
+            1,
+            0,
+            "LATENT"
+          ]
+        ]
+      }
+    },
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "frontendVersion": "1.19.9",
+    "links_added_by_ue": []
+  },
+  "version": 0.4
+}

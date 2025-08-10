@@ -1,0 +1,452 @@
+{
+  "id": "1b1fd30b-1854-4fd3-a101-1ca4f2b3a9e7",
+  "revision": 0,
+  "last_node_id": 17,
+  "last_link_id": 17,
+  "nodes": [
+    {
+      "id": 6,
+      "type": "LayerUtility: LoadJoyCaptionBeta1Model",
+      "pos": [
+        -6462.416015625,
+        -1228.4544677734375
+      ],
+      "size": [
+        537.5379638671875,
+        127.11063385009766
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "joycaption_beta1_model",
+          "name": "joycaption_beta1_model",
+          "type": "JOYCAPTIONBETA1_MODEL",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI_LayerStyle_Advance",
+        "ver": "0f9184100e626e3202568a7cf890b3b92685a168",
+        "Node name for S&R": "LayerUtility: LoadJoyCaptionBeta1Model",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "fancyfeast/llama-joycaption-beta-one-hf-llava",
+        "nf4",
+        "cuda"
+      ],
+      "color": "#901919",
+      "bgcolor": "#a93232"
+    },
+    {
+      "id": 5,
+      "type": "LayerUtility: JoyCaptionBeta1ExtraOptions",
+      "pos": [
+        -7642.03857421875,
+        -1216.0924072265625
+      ],
+      "size": [
+        537.5379638671875,
+        706.0001831054688
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "extra_option",
+          "name": "extra_option",
+          "type": "JoyCaption2ExtraOption",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI_LayerStyle_Advance",
+        "ver": "0f9184100e626e3202568a7cf890b3b92685a168",
+        "Node name for S&R": "LayerUtility: JoyCaptionBeta1ExtraOptions",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        false,
+        false,
+        "test"
+      ],
+      "color": "#901919",
+      "bgcolor": "#a93232"
+    },
+    {
+      "id": 16,
+      "type": "Load Image Batch",
+      "pos": [
+        -7049.8251953125,
+        -1228.4544677734375
+      ],
+      "size": [
+        537.5379638671875,
+        273.42706298828125
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            15,
+            17
+          ]
+        },
+        {
+          "name": "filename_text",
+          "type": "STRING",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "pr-was-node-suite-comfyui-47064894",
+        "ver": "ea935d1044ae5a26efa54ebeb18fe9020af49a45",
+        "Node name for S&R": "Load Image Batch",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "incremental_image",
+        113778960008788,
+        "increment",
+        1,
+        "Batch001",
+        "D:\\ComfyUI25A\\ComfyUI_windows_portable_nvidia\\ComfyUI_windows_portable\\ComfyUI\\output\\2025-06-08",
+        "*",
+        "false",
+        "false"
+      ],
+      "color": "#901919",
+      "bgcolor": "#a93232"
+    },
+    {
+      "id": 14,
+      "type": "Save Text File",
+      "pos": [
+        -5219.07568359375,
+        -1218.6209716796875
+      ],
+      "size": [
+        537.5379638671875,
+        202
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 12
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          },
+          "link": 16
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "pr-was-node-suite-comfyui-47064894",
+        "ver": "ea935d1044ae5a26efa54ebeb18fe9020af49a45",
+        "Node name for S&R": "Save Text File",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "D:\\ComfyUI25A\\ComfyUI_windows_portable_nvidia\\ComfyUI_windows_portable\\ComfyUI\\output\\2025-06-08",
+        "ComfyUI",
+        "",
+        0,
+        ".txt",
+        "utf-8",
+        ""
+      ],
+      "color": "#124c12",
+      "bgcolor": "#2b652b"
+    },
+    {
+      "id": 13,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -5859.08935546875,
+        -1218.6209716796875
+      ],
+      "size": [
+        537.5379638671875,
+        662.8604125976562
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "1.2.5",
+        "Node name for S&R": "ShowText|pysssss",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "The image depicts a detailed digital illustration of a test character, an armored figure standing in a neutral, light gray background. The character is viewed from a medium close-up angle, at eye-level. The test character has a sleek, futuristic head shape with a smooth, featureless visor covering the face, giving a robotic or alien-like appearance. The visor is black with a narrow, vertical slit for the eyes, which are not visible.\n\nThe character's armor is predominantly white with black accents, featuring a high-tech, segmented design. The armor covers the entire body, including the shoulders, chest, arms, and legs, with a distinct, angular pattern. The character's chest armor has a pronounced, rectangular shape, adding to the futuristic aesthetic. The test character holds a large, black and silver gun in the right hand, which is detailed with multiple parts and textures, suggesting a high level of complexity.\n\nThe character's cloak is white and slightly tattered, adding a touch of realism and texture to the otherwise sleek armor. The cloak flows down the back, creating a dynamic, slightly asymmetrical shape.\n\nThe skin texture of the character is smooth and metallic, consistent with the armor's design. The lighting is even and soft, with no harsh shadows, highlighting the character's details and textures. The overall style is realistic, with a high level of detail and precision typical of digital concept art. The image does not depict an extreme close-up, close-up, medium close-up, medium shot, cowboy shot, medium wide shot, or extreme wide shot, but rather a medium close-up at eye-level. The vantage height is neutral, focusing on the character's upper body and face shape. The character appears to be ageless, with no specific age indicators."
+      ],
+      "color": "#124c12",
+      "bgcolor": "#2b652b"
+    },
+    {
+      "id": 2,
+      "type": "LayerUtility: JoyCaptionBeta1",
+      "pos": [
+        -6460.390625,
+        -1028.4322509765625
+      ],
+      "size": [
+        537.5379638671875,
+        510.59930419921875
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 15
+        },
+        {
+          "name": "joycaption_beta1_model",
+          "type": "JOYCAPTIONBETA1_MODEL",
+          "link": 3
+        },
+        {
+          "name": "extra_options",
+          "shape": 7,
+          "type": "JoyCaption2ExtraOption",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_layerstyle_advance",
+        "ver": "0f9184100e626e3202568a7cf890b3b92685a168",
+        "Node name for S&R": "LayerUtility: JoyCaptionBeta1",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Descriptive",
+        "long",
+        1024,
+        0.9,
+        0,
+        0.6,
+        "Describe the image with extreme detail, focusing on facial features, hair, skin texture, and overall aesthetic.\nStart by describing the subject’s face structure and proportions: head shape, jawline, cheekbones, forehead, and chin. Note the nose shape and size, nostril definition, bridge, and tip.\nThen describe the eyes in depth: shape, eyelid fold, iris color and pattern, pupil visibility, gaze direction, eyelashes (length, density, curl), and eyebrows (shape, thickness, grooming, arch). Include the presence and detail of makeup if applicable.\nContinue with the skin: tone, undertone, texture (smooth, porous, oily, dry), visible features like freckles, moles, wrinkles, or blush, and how light interacts with the skin (glow, matte, dewy).\nMove to the lips and mouth: shape, fullness, natural color or makeup, definition of the cupid’s bow, and any visible texture or gloss.\nDescribe the hair in detail: length, color, highlights or lowlights, parting, texture (straight, wavy, curly), styling, and volume. Note any visible strands, flyaways, or accessories (pins, headbands).\nClose with environmental context: background color or scene (studio, lifestyle, natural), type and direction of light, shadows on the face, mood and emotion conveyed through expression, and the overall photographic or editorial style (e.g., beauty campaign, fine art portrait, fashion catalog).\nBe highly descriptive, refined, and write in fluent, photographic English suitable for beauty editorials, fashion photography, or high-end model portfolios.",
+        [
+          false,
+          true
+        ]
+      ],
+      "color": "#901919",
+      "bgcolor": "#a93232"
+    },
+    {
+      "id": 7,
+      "type": "PreviewImage",
+      "pos": [
+        -7045.97509765625,
+        -895.4673461914062
+      ],
+      "size": [
+        537.5379638671875,
+        393.53424072265625
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 17
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#901919",
+      "bgcolor": "#a93232"
+    },
+    {
+      "id": 17,
+      "type": "Note",
+      "pos": [
+        -7622.4189453125,
+        -429.03985595703125
+      ],
+      "size": [
+        2976.16455078125,
+        224.7082977294922
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "🔍 How the Workflow Works – JoyCaption Beta One in ComfyUI\nThis workflow automatically analyzes a batch of images and generates highly detailed text descriptions, ideal for concept art, character design, tagging, or dataset documentation.\n\nMain Steps:\nLoad Images (Load Image Batch)\nThe workflow loads images from a specified folder. The node is set to handle filename incrementing automatically.\n\n👉 Important:\nThe number of generations must exactly match the number of images in the input folder.\nFor example, if there are 10 images, the workflow must run 10 times—one per image.\n\nLoad LLM Model (JoyCaption Beta One Model)\nA specialized vision-language model is loaded (e.g., llama-joycaption-beta-one-nr-llava), optimized for image captioning. It runs on GPU (CUDA) for speed and performance.\n\nConfigure Extra Options\nThe “Extra Options” node lets you fine-tune what gets included in the description—such as lighting, camera angle, character age, and whether to exclude text or sensitive content.\n\nGenerate the Description\nThe central node takes the image and a detailed caption prompt as input and produces a high-quality text description in editorial or concept-art style.\n\nView and Save Output\nThe generated text is both displayed on screen and saved automatically to a .txt file. Each description is saved using the image’s original filename (with or without suffixes or delimiters, depending on your settings)."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      3,
+      6,
+      0,
+      2,
+      1,
+      "JOYCAPTIONBETA1_MODEL"
+    ],
+    [
+      4,
+      5,
+      0,
+      2,
+      2,
+      "JoyCaption2ExtraOption"
+    ],
+    [
+      10,
+      2,
+      0,
+      13,
+      0,
+      "STRING"
+    ],
+    [
+      12,
+      13,
+      0,
+      14,
+      0,
+      "STRING"
+    ],
+    [
+      15,
+      16,
+      0,
+      2,
+      0,
+      "IMAGE"
+    ],
+    [
+      16,
+      16,
+      1,
+      14,
+      1,
+      "STRING"
+    ],
+    [
+      17,
+      16,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ue_links": [],
+    "ds": {
+      "scale": 0.7972024500000009,
+      "offset": [
+        7982.845897343906,
+        1425.8590225752455
+      ]
+    },
+    "links_added_by_ue": [],
+    "frontendVersion": "1.20.7",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
