@@ -1,0 +1,977 @@
+{
+  "last_node_id": 32,
+  "last_link_id": 38,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": {
+        "0": 1430,
+        "1": 130
+      },
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 7
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            9
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "v0.2.2",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 19,
+      "type": "UltralyticsDetectorProvider",
+      "pos": {
+        "0": 102,
+        "1": 745
+      },
+      "size": {
+        "0": 315,
+        "1": 78
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BBOX_DETECTOR",
+          "type": "BBOX_DETECTOR",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "SEGM_DETECTOR",
+          "type": "SEGM_DETECTOR",
+          "links": [
+            17
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-subpack",
+        "ver": "74db20c95eca152a6d686c914edc0ef4e4762cb8",
+        "Node name for S&R": "UltralyticsDetectorProvider"
+      },
+      "widgets_values": [
+        "segm/yolov8m-seg.pt"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "SAMLoader",
+      "pos": {
+        "0": 115,
+        "1": 876
+      },
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAM_MODEL",
+          "type": "SAM_MODEL",
+          "links": [
+            16
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "0e3e6a193a68748b5e68cfd19fb6c7d92b2fac57",
+        "Node name for S&R": "SAMLoader"
+      },
+      "widgets_values": [
+        "sam_vit_b_01ec64.pth",
+        "AUTO"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": {
+        "0": 513,
+        "1": 402
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 32
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            3,
+            14
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "v0.2.2",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "text, watermark, nude, naked, nipples"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 18,
+      "type": "UltralyticsDetectorProvider",
+      "pos": {
+        "0": 101,
+        "1": 603
+      },
+      "size": {
+        "0": 315,
+        "1": 78
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BBOX_DETECTOR",
+          "type": "BBOX_DETECTOR",
+          "links": [
+            15
+          ],
+          "shape": 3
+        },
+        {
+          "name": "SEGM_DETECTOR",
+          "type": "SEGM_DETECTOR",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-subpack",
+        "ver": "74db20c95eca152a6d686c914edc0ef4e4762cb8",
+        "Node name for S&R": "UltralyticsDetectorProvider"
+      },
+      "widgets_values": [
+        "bbox/face_yolov8m.pt"
+      ]
+    },
+    {
+      "id": 24,
+      "type": "SaveImage",
+      "pos": {
+        "0": 1952,
+        "1": 300
+      },
+      "size": {
+        "0": 1362.515869140625,
+        "1": 1112.16748046875
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 18
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "v0.2.2"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": {
+        "0": 1015,
+        "1": 130
+      },
+      "size": {
+        "0": 315,
+        "1": 262
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 33
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 2
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 3
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            7
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "v0.2.2",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        906332828755966,
+        "fixed",
+        8,
+        1,
+        "lcm",
+        "exponential",
+        1
+      ]
+    },
+    {
+      "id": 17,
+      "type": "FaceDetailer",
+      "pos": {
+        "0": 1350,
+        "1": 134
+      },
+      "size": {
+        "0": 519,
+        "1": 948
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 37
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 38
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 12
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 13
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 14
+        },
+        {
+          "name": "bbox_detector",
+          "type": "BBOX_DETECTOR",
+          "link": 15
+        },
+        {
+          "name": "sam_model_opt",
+          "type": "SAM_MODEL",
+          "link": 16,
+          "shape": 7
+        },
+        {
+          "name": "segm_detector_opt",
+          "type": "SEGM_DETECTOR",
+          "link": 17,
+          "shape": 7
+        },
+        {
+          "name": "detailer_hook",
+          "type": "DETAILER_HOOK",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "scheduler_func_opt",
+          "type": "SCHEDULER_FUNC",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            18
+          ],
+          "shape": 3
+        },
+        {
+          "name": "cropped_refined",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 6
+        },
+        {
+          "name": "cropped_enhanced_alpha",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 6
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "detailer_pipe",
+          "type": "DETAILER_PIPE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "cnet_images",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "0e3e6a193a68748b5e68cfd19fb6c7d92b2fac57",
+        "Node name for S&R": "FaceDetailer"
+      },
+      "widgets_values": [
+        1024,
+        true,
+        1024,
+        533779833840473,
+        "fixed",
+        8,
+        1,
+        "lcm",
+        "exponential",
+        0.55,
+        15,
+        true,
+        true,
+        0.75,
+        10,
+        3,
+        "center-1",
+        0,
+        0.93,
+        0,
+        0.7000000000000001,
+        "False",
+        10,
+        "",
+        1,
+        false,
+        20,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": {
+        "0": 95,
+        "1": 429
+      },
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            4
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "v0.2.2",
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        832,
+        1216,
+        24
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": {
+        "0": 510,
+        "1": 84
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 31
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            2,
+            13
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "v0.2.2",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "A candid photo of LAYLASINCLAIR, a 19-year-old woman of American mixed heritage (bountiful 38DD cleavage:1.5), fair skin with golden undertones, sun-kissed glow, freckles, platinum silver hair with lavender hint styled in long loose waves, narrow waist (24 inches), wide hips (35 inches), curvy toned bum, long toned legs, athletic build. She is dancing in a dark nightclub with her hands elegantly in the air, wearing a sexy white dress with a deep V-neck and high-cut legs that accentuate her toned physique and curvy figure. The outfit is paired with strappy black stilettos and bold gold jewelry that catches the dim light of the club.\n\nHer delicate symmetrical face is softly illuminated by the glow of pink neon lights and strobe lights, highlighting her bright icy blue eyes with a gray hint, full rosy lips with a pronounced cupid’s bow, and high cheekbones.\n\nThe dark nightclub backdrop features blurred figures dancing in the distance, strobe lights casting dynamic shadows. The image is captured on an iPhone 15 Pro, 26mm lens, f/1.8, Smart HDR, with low-light conditions creating dramatic contrasts and soft shadows that enhance her features. The composition includes realistic shallow depth of field, subtle motion blur from the strobe lights, and a lively nightlife atmosphere."
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": {
+        "0": 142,
+        "1": 19
+      },
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            28
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            29
+          ],
+          "slot_index": 1,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            8
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "v0.2.2",
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "AIIM_Realism_FAST.safetensors"
+      ]
+    },
+    {
+      "id": 32,
+      "type": "Power Lora Loader (rgthree)",
+      "pos": {
+        "0": 971,
+        "1": 590
+      },
+      "size": {
+        "0": 340.20001220703125,
+        "1": 166
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 34,
+          "dir": 3
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 35,
+          "dir": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            37
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "dir": 4
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            38
+          ],
+          "slot_index": 1,
+          "shape": 3,
+          "dir": 4
+        }
+      ],
+      "properties": {
+        "cnr_id": "rgthree-comfy",
+        "ver": "32142fe476878a354dda6e2d4b5ea98960de3ced",
+        "Show Strengths": "Single Strength"
+      },
+      "widgets_values": [
+        {},
+        {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        {
+          "on": false,
+          "lora": "add_detail.safetensors",
+          "strength": 0.93,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "depth_of_field_slider_v1.safetensors",
+          "strength": 2,
+          "strengthTwo": null
+        },
+        {},
+        ""
+      ]
+    },
+    {
+      "id": 31,
+      "type": "Power Lora Loader (rgthree)",
+      "pos": {
+        "0": 82,
+        "1": 202
+      },
+      "size": {
+        "0": 340.20001220703125,
+        "1": 166
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 28,
+          "dir": 3
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 29,
+          "dir": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            33
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "dir": 4
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            31,
+            32
+          ],
+          "slot_index": 1,
+          "shape": 3,
+          "dir": 4
+        }
+      ],
+      "properties": {
+        "cnr_id": "rgthree-comfy",
+        "ver": "32142fe476878a354dda6e2d4b5ea98960de3ced",
+        "Show Strengths": "Single Strength"
+      },
+      "widgets_values": [
+        {},
+        {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        {
+          "on": false,
+          "lora": "depth_of_field_slider_v1.safetensors",
+          "strength": 0.93,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "add_detail.safetensors",
+          "strength": 2,
+          "strengthTwo": null
+        },
+        {},
+        ""
+      ]
+    },
+    {
+      "id": 27,
+      "type": "CheckpointLoaderSimple",
+      "pos": {
+        "0": 516,
+        "1": 668
+      },
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            34
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            35
+          ],
+          "slot_index": 1,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            12
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "v0.2.2",
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "AIIM_Realism_FAST.safetensors"
+      ]
+    }
+  ],
+  "links": [
+    [
+      2,
+      6,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      3,
+      7,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      4,
+      5,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      7,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      8,
+      4,
+      2,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      9,
+      8,
+      0,
+      17,
+      0,
+      "IMAGE"
+    ],
+    [
+      12,
+      27,
+      2,
+      17,
+      3,
+      "VAE"
+    ],
+    [
+      13,
+      6,
+      0,
+      17,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      14,
+      7,
+      0,
+      17,
+      5,
+      "CONDITIONING"
+    ],
+    [
+      15,
+      18,
+      0,
+      17,
+      6,
+      "BBOX_DETECTOR"
+    ],
+    [
+      16,
+      20,
+      0,
+      17,
+      7,
+      "SAM_MODEL"
+    ],
+    [
+      17,
+      19,
+      1,
+      17,
+      8,
+      "SEGM_DETECTOR"
+    ],
+    [
+      18,
+      17,
+      0,
+      24,
+      0,
+      "IMAGE"
+    ],
+    [
+      28,
+      4,
+      0,
+      31,
+      0,
+      "MODEL"
+    ],
+    [
+      29,
+      4,
+      1,
+      31,
+      1,
+      "CLIP"
+    ],
+    [
+      31,
+      31,
+      1,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      32,
+      31,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      33,
+      31,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      34,
+      27,
+      0,
+      32,
+      0,
+      "MODEL"
+    ],
+    [
+      35,
+      27,
+      1,
+      32,
+      1,
+      "CLIP"
+    ],
+    [
+      37,
+      32,
+      0,
+      17,
+      1,
+      "MODEL"
+    ],
+    [
+      38,
+      32,
+      1,
+      17,
+      2,
+      "CLIP"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6830134553650705,
+      "offset": [
+        -559.5306227432235,
+        -97.94975117568947
+      ]
+    },
+    "ue_links": []
+  },
+  "version": 0.4
+}
