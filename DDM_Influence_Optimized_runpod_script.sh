@@ -25,7 +25,7 @@ CLIP_VISION_MODELS=(
 
 # https://github.com/your-repo/portrait-master-runpod-template
 
-DEFAULT_WORKFLOW="https://raw.githubusercontent.com/your-repo/portrait-master-runpod-template/refs/heads/main/workflows/PortraitMaster_Flux1_Full-body.json"
+DEFAULT_WORKFLOW="https://raw.githubusercontent.com/Revmagi/DiaDeMuertos-RunPod-Influencer/refs/heads/main/workflows/PortraitMaster/PortraitMaster_Flux1_Full-body.json"
 
 APT_PACKAGES=(
     "git"
