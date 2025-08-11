@@ -25,7 +25,7 @@ CLIP_VISION_MODELS=(
 
 # https://github.com/your-repo/portrait-master-runpod-template
 
-DEFAULT_WORKFLOW="https://raw.githubusercontent.com/Revmagi/DiaDeMuertos-RunPod-Influencer/refs/heads/main/workflows/PortraitMaster/PortraitMaster_Flux1_Full-body.json"
+DEFAULT_WORKFLOW="https://raw.githubusercontent.com/your-repo/portrait-master-runpod-template/refs/heads/main/workflows/PortraitMaster_Flux1_Full-body.json"
 
 APT_PACKAGES=(
     "git"
@@ -40,9 +40,8 @@ APT_PACKAGES=(
 )
 
 PIP_PACKAGES=(
-    "torch"
-    "torchvision"
-    "torchaudio"
+    # Core PyTorch - Install specific compatible versions
+    "torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2+cu121 --index-url https://download.pytorch.org/whl/cu121"
     "torchsde"
     "numpy>=1.25.0"
     "einops"
@@ -59,7 +58,7 @@ PIP_PACKAGES=(
     "psutil"
     "kornia>=0.7.1"
     "diffusers"
-    "xformers"
+    "xformers==0.0.23.post1"
     "comfyui-frontend-package"
     "huggingface_hub[cli]>=0.20.0"
     "accelerate"
@@ -540,8 +539,12 @@ function provisioning_start() {
 
     provisioning_print_header
     
-    # NEW: VRAM-based model selection
-    select_flux_models_by_vram
+    # Install ALL models - no VRAM selection needed
+    echo "🚀 Installing ALL models for maximum flexibility..."
+    SELECTED_FLUX_GGUF=("${FLUX_GGUF_8GB[@]}" "${FLUX_GGUF_12GB[@]}" "${FLUX_GGUF_16GB[@]}" "${FLUX_GGUF_24GB[@]}")
+    SELECTED_T5_GGUF=("${T5_GGUF_MODELS[@]}")
+    SELECTED_VACE_GGUF=("${VACE_GGUF_12GB[@]}" "${VACE_GGUF_16GB[@]}" "${VACE_GGUF_24GB[@]}" "${VACE_GGUF_32GB[@]}")
+    SELECTED_UMT5_GGUF=("${UMT5_GGUF_MODELS[@]}")
     
     provisioning_get_apt_packages
     provisioning_get_nodes
