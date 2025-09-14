@@ -130,23 +130,23 @@ class DDMInterface {
         this.deployments.set(deploymentId, deployment);
 
         // Start the deployment process
-        const process = spawn('bash', [scriptPath], {
+        const deploymentProcess = spawn('bash', [scriptPath], {
             env: { ...process.env, ...config }
         });
 
-        process.stdout.on('data', (data) => {
+        deploymentProcess.stdout.on('data', (data) => {
             const log = data.toString();
             deployment.logs.push({ type: 'stdout', message: log, timestamp: new Date() });
             this.io.to(`deployment-${deploymentId}`).emit('deployment-log', { type: 'stdout', message: log });
         });
 
-        process.stderr.on('data', (data) => {
+        deploymentProcess.stderr.on('data', (data) => {
             const log = data.toString();
             deployment.logs.push({ type: 'stderr', message: log, timestamp: new Date() });
             this.io.to(`deployment-${deploymentId}`).emit('deployment-log', { type: 'stderr', message: log });
         });
 
-        process.on('close', (code) => {
+        deploymentProcess.on('close', (code) => {
             deployment.status = code === 0 ? 'completed' : 'failed';
             deployment.endTime = new Date();
             this.io.to(`deployment-${deploymentId}`).emit('deployment-status', { status: deployment.status, code });
