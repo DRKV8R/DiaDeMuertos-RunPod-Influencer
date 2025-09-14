@@ -17,4 +17,24 @@
   .glass-card {
     @apply bg-white/5 backdrop-blur-lg border border-white/10;
   }
+  
+  .nav-link {
+    @apply block px-4 py-2 text-sm font-medium transition-all duration-200;
+  }
+  
+  .nav-link:hover {
+    @apply text-dia-orange;
+  }
+  
+  .dashboard-section {
+    @apply transition-all duration-300;
+  }
+  
+  .quick-deploy-btn {
+    @apply transform hover:scale-105 cursor-pointer;
+  }
+  
+  .metric-card {
+    @apply bg-dia-dark/60 backdrop-blur-sm rounded-xl p-6 border border-opacity-20 hover:border-opacity-40 transition-all;
+  }
 }

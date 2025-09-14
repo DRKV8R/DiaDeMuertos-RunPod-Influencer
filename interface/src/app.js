@@ -2,6 +2,8 @@ class DDMInterface {
     constructor() {
         this.socket = io();
         this.currentDeployment = null;
+        this.currentSection = 'dashboard';
+        this.startTime = Date.now();
         this.init();
     }
 
@@ -10,6 +12,8 @@ class DDMInterface {
         this.loadAvailableScripts();
         this.setupWebSocket();
         this.animatePageLoad();
+        this.startSystemMonitoring();
+        this.updateUptime();
     }
 
     setupEventListeners() {
@@ -21,6 +25,181 @@ class DDMInterface {
         
         // Theme toggle
         document.getElementById('themeToggle').addEventListener('click', this.toggleTheme.bind(this));
+        
+        // Mobile menu toggle
+        document.getElementById('mobileMenuToggle').addEventListener('click', this.toggleMobileMenu.bind(this));
+        
+        // Navigation
+        document.querySelectorAll('.nav-link, .nav-link-mobile').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = e.target.closest('a').dataset.section;
+                this.switchSection(section);
+            });
+        });
+        
+        // Quick deploy buttons
+        document.querySelectorAll('.quick-deploy-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const script = e.currentTarget.dataset.script;
+                this.quickDeploy(script);
+            });
+        });
+    }
+
+    toggleMobileMenu() {
+        const mobileNav = document.getElementById('mobileNav');
+        mobileNav.classList.toggle('hidden');
+    }
+
+    switchSection(section) {
+        // Hide all sections
+        document.querySelectorAll('.dashboard-section').forEach(sec => {
+            sec.classList.add('hidden');
+        });
+        
+        // Show selected section
+        document.getElementById(`${section}-section`).classList.remove('hidden');
+        
+        // Update navigation
+        document.querySelectorAll('.nav-link, .nav-link-mobile').forEach(link => {
+            const isActive = link.dataset.section === section;
+            if (link.classList.contains('nav-link')) {
+                // Desktop navigation
+                if (isActive) {
+                    link.className = 'nav-link text-dia-orange border-b-2 border-dia-orange';
+                } else {
+                    link.className = 'nav-link text-gray-300 hover:text-dia-orange transition-all';
+                }
+            } else {
+                // Mobile navigation
+                if (isActive) {
+                    link.className = 'nav-link-mobile text-dia-orange bg-dia-orange/10 px-4 py-2 rounded-lg';
+                } else {
+                    const colors = {
+                        deployments: 'hover:text-dia-purple hover:bg-dia-purple/10',
+                        monitoring: 'hover:text-dia-gold hover:bg-dia-gold/10',
+                        system: 'hover:text-dia-orange hover:bg-dia-orange/10'
+                    };
+                    const colorClass = colors[link.dataset.section] || 'hover:text-dia-orange hover:bg-dia-orange/10';
+                    link.className = `nav-link-mobile text-gray-300 ${colorClass} px-4 py-2 rounded-lg transition-all`;
+                }
+            }
+        });
+        
+        this.currentSection = section;
+        
+        // Hide mobile menu after selection
+        document.getElementById('mobileNav').classList.add('hidden');
+        
+        // Section-specific initialization
+        if (section === 'monitoring') {
+            this.updateSystemMetrics();
+        } else if (section === 'system') {
+            this.updateSystemInfo();
+        }
+    }
+
+    quickDeploy(script) {
+        // Switch to deployments section
+        this.switchSection('deployments');
+        
+        // Set the script in the dropdown
+        document.getElementById('scriptSelect').value = script;
+        
+        // Trigger change event to show description
+        document.getElementById('scriptSelect').dispatchEvent(new Event('change'));
+        
+        // Show notification
+        this.showNotification(`Quick deploy selected: ${script.replace('.sh', '').replace(/_/g, ' ')}`, 'info');
+    }
+
+    startSystemMonitoring() {
+        setInterval(() => {
+            this.updateSystemMetrics();
+            this.updateUptime();
+        }, 5000);
+    }
+
+    updateSystemMetrics() {
+        // Simulate system metrics (in a real app, these would come from the server)
+        const metrics = {
+            memory: (Math.random() * 40 + 30).toFixed(1) + '%',
+            cpu: (Math.random() * 60 + 20).toFixed(1) + '%',
+            gpu: (Math.random() * 80 + 10).toFixed(1) + '%'
+        };
+        
+        const memoryEl = document.getElementById('memoryUsage');
+        const cpuEl = document.getElementById('cpuUsage');
+        const gpuEl = document.getElementById('gpuUsage');
+        
+        if (memoryEl) memoryEl.textContent = metrics.memory;
+        if (cpuEl) cpuEl.textContent = metrics.cpu;
+        if (gpuEl) gpuEl.textContent = metrics.gpu;
+    }
+
+    updateSystemInfo() {
+        // Update version information (since process is not available in browser, use static values)
+        const nodeEl = document.getElementById('nodeVersion');
+        const pythonEl = document.getElementById('pythonVersion');
+        
+        if (nodeEl) nodeEl.textContent = 'v18.x';
+        if (pythonEl) pythonEl.textContent = '3.11.x';
+    }
+
+    updateUptime() {
+        const uptimeEl = document.getElementById('uptime');
+        if (uptimeEl) {
+            const uptime = Date.now() - this.startTime;
+            const hours = Math.floor(uptime / (1000 * 60 * 60));
+            const minutes = Math.floor((uptime % (1000 * 60 * 60)) / (1000 * 60));
+            uptimeEl.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+        }
+    }
+
+    addRecentActivity(message, type = 'info') {
+        const container = document.getElementById('recentActivity');
+        if (!container) return;
+        
+        // Remove placeholder if present
+        const placeholder = container.querySelector('.text-center');
+        if (placeholder) {
+            placeholder.remove();
+        }
+        
+        const activity = document.createElement('div');
+        activity.className = 'flex items-center space-x-3 p-3 bg-dia-darker/50 rounded-lg border-l-4';
+        
+        const colors = {
+            info: 'border-dia-orange text-dia-orange',
+            success: 'border-green-400 text-green-400',
+            error: 'border-red-400 text-red-400',
+            warning: 'border-yellow-400 text-yellow-400'
+        };
+        
+        const icons = {
+            info: 'info-circle',
+            success: 'check-circle',
+            error: 'exclamation-circle',
+            warning: 'exclamation-triangle'
+        };
+        
+        activity.className += ` ${colors[type] || colors.info}`;
+        
+        activity.innerHTML = `
+            <i class="fas fa-${icons[type] || icons.info}"></i>
+            <div class="flex-1">
+                <p class="text-white text-sm">${message}</p>
+                <p class="text-gray-500 text-xs">${new Date().toLocaleTimeString()}</p>
+            </div>
+        `;
+        
+        container.insertBefore(activity, container.firstChild);
+        
+        // Keep only last 5 activities
+        while (container.children.length > 5) {
+            container.removeChild(container.lastChild);
+        }
     }
 
     setupWebSocket() {
@@ -115,12 +294,14 @@ class DDMInterface {
                 this.appendLog(`🚀 Starting deployment: ${script}`, 'info');
                 this.updateActiveDeployments();
                 this.showNotification('Deployment started successfully', 'success');
+                this.addRecentActivity(`Started deployment: ${script.replace('.sh', '').replace(/_/g, ' ')}`, 'info');
             } else {
                 throw new Error(result.error);
             }
         } catch (error) {
             console.error('Deployment failed:', error);
             this.showNotification(`Deployment failed: ${error.message}`, 'error');
+            this.addRecentActivity(`Deployment failed: ${error.message}`, 'error');
         }
     }
 
@@ -151,6 +332,7 @@ class DDMInterface {
         if (status === 'completed' || status === 'failed') {
             this.currentDeployment = null;
             this.updateActiveDeployments();
+            this.addRecentActivity(`Deployment ${status}`, status === 'completed' ? 'success' : 'error');
         }
     }
 
