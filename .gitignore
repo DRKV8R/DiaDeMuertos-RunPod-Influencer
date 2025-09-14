@@ -44,6 +44,7 @@ interface/dist/
 
 # Static files (include these)
 !interface/static/
+!interface/static/js/socket.io.min.js
 
 # Temporary files
 /tmp/
