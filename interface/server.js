@@ -103,6 +103,8 @@ class DDMInterface {
         const descriptions = {
             'ddm_optimized.sh': 'Optimized Día de Muertos ComfyUI deployment with latest models',
             'ddm_modern_deploy.sh': '🎭 Modern DDM deployment with @DRKV8R/ENDS agent and dark interface',
+            'ddm_ultra_optimized.sh': '⚡ Ultra-optimized DDM with shared library (FASTEST deployment)',
+            'ddm_quick.sh': '🚀 Quick DDM deployment for rapid prototyping',
             'default.sh': 'Standard ComfyUI deployment with essential nodes',
             'skyreels_installer.sh': 'Video-focused deployment with SkyReels integration',
             'i2v_hunyuan.sh': 'Image-to-video generation with HunyuanVideo',

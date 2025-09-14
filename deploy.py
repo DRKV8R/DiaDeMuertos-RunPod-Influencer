@@ -43,6 +43,9 @@ class DDMDeployment:
         """Get description for deployment script"""
         descriptions = {
             "ddm_optimized.sh": "💀 Optimized Día de Muertos deployment",
+            "ddm_modern_deploy.sh": "🎭 Modern DDM deployment with @DRKV8R/ENDS agent",
+            "ddm_ultra_optimized.sh": "⚡ Ultra-optimized DDM with shared library (FASTEST)",
+            "ddm_quick.sh": "🚀 Quick DDM deployment for rapid prototyping",
             "default.sh": "📦 Standard ComfyUI deployment",
             "skyreels_installer.sh": "🎬 Video-focused SkyReels deployment",
             "i2v_hunyuan.sh": "🎞️ Image-to-video with HunyuanVideo",
