@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+.env
+.venv
+
+# Logs and databases
+*.log
+*.db
+*.sqlite3
+agents/ends.log
+agents/ends.pid
+interface/server.pid
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build artifacts
+interface/dist/
+*.min.js
+*.min.css
+
+# Temporary files
+/tmp/
+temp/
+*.tmp
+
+# Model files (too large for git)
+models/
+*.safetensors
+*.ckpt
+*.pth
+*.bin
+
+# Runtime files
+*.pid
+comfyui.pid

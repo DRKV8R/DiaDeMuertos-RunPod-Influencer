@@ -1,0 +1,45 @@
+{
+  "name": "diadeMuertos-runpod-influencer",
+  "version": "2.0.0",
+  "description": "Modern RunPod deployment interface for Día de Muertos AI influencer generation with ComfyUI",
+  "main": "interface/app.js",
+  "scripts": {
+    "dev": "node interface/server.js",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "tailwindcss -i interface/src/styles.css -o interface/dist/styles.css --watch",
+    "build:js": "esbuild interface/src/app.js --bundle --outfile=interface/dist/app.js --minify",
+    "start": "node interface/server.js",
+    "install:deps": "npm install && pip install -r requirements.txt"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5",
+    "ws": "^8.17.1",
+    "node-fetch": "^3.3.2",
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.4",
+    "esbuild": "^0.21.5",
+    "@tailwindcss/forms": "^0.5.7",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38"
+  },
+  "keywords": [
+    "comfyui",
+    "runpod",
+    "ai",
+    "influencer",
+    "dia-de-muertos",
+    "deployment",
+    "automation"
+  ],
+  "author": "@DRKV8R",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DRKV8R/DiaDeMuertos-RunPod-Influencer.git"
+  }
+}
