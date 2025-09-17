@@ -24,7 +24,12 @@ python3 deploy.py
 python3 deploy.py --quick --script modern
 ```
 
-### Option 3: Direct Script
+### Option 3: Enhanced Video (WAN 2.2)
+```bash
+./wan22_enhanced_video.sh
+```
+
+### Option 4: Direct Script
 ```bash
 ./ddm_modern_deploy.sh
 ```
@@ -34,7 +39,8 @@ python3 deploy.py --quick --script modern
 | Script | Description |
 |--------|-------------|
 | `modern` | 🎭 Modern DDM deployment with @DRKV8R/ENDS agent |
-| `ddm_optimized` | 💀 Optimized Día de Muertos deployment |
+| `ddm_optimized` | 💀 Optimized Día de Muertos deployment with WAN 2.2 support |
+| `wan22_enhanced_video` | 🚀 **NEW** Enhanced WAN 2.2 video generation with Lightning LoRAs |
 | `skyreels_installer` | 🎬 Video-focused SkyReels deployment |
 | `i2v_hunyuan` | 🎞️ Image-to-video with HunyuanVideo |
 | `wan21_img2vid` | 🎯 WAN 2.1 video generation |
@@ -81,9 +87,34 @@ The Enhanced Neural Deployment System provides:
 - **Font Awesome** for icons
 
 ### Dependencies
-- **Latest AI Models**: FLUX.1, ControlNet, VAE models
+- **Latest AI Models**: FLUX.1, WAN 2.2 Enhanced Video, ControlNet, VAE models
+- **WAN 2.2 Features**: Fun Camera, Fun Control, Fun Inpaint, Sound-to-Video, Lightning LoRAs
 - **Custom Nodes**: 20+ specialized ComfyUI nodes
 - **Optimized Libraries**: XFormers, Accelerate, Transformers
+
+## 🎬 WAN 2.2 Video Enhancement Features
+
+### 🚀 **Major Upgrade from WAN 2.1**
+- **⚡ Lightning LoRAs**: 4x faster video generation (4 steps vs 50+ steps)
+- **🎥 Fun Camera Models**: Dynamic camera movements and cinematic effects
+- **🎛️ Fun Control Models**: Precise motion and object control
+- **✨ Fun Inpaint Models**: Advanced video editing and object removal
+- **🎵 Sound-to-Video**: Generate videos from audio input
+- **🖼️ Text+Image-to-Video**: Combined conditioning for precise control
+- **🎨 Enhanced VAE**: Improved temporal consistency and quality
+
+### 📊 Performance Comparison: FLUX 1 vs WAN 2.2
+| Feature | FLUX 1 | WAN 2.2 |
+|---------|--------|---------|
+| **Primary Use** | Image Generation | Advanced Video Generation |
+| **Generation Speed** | 2-8 seconds (images) | 10-30 seconds (videos with Lightning) |
+| **Video Quality** | Limited | Professional-grade temporal consistency |
+| **Camera Control** | ❌ | ✅ Fun Camera models |
+| **Audio Integration** | ❌ | ✅ Sound-to-Video |
+| **Video Editing** | ❌ | ✅ Fun Inpaint models |
+| **Memory Options** | 8-24GB VRAM | 12-32GB VRAM optimal |
+
+> 📖 **Detailed Comparison**: See [`FLUX_WAN22_COMPARISON.md`](FLUX_WAN22_COMPARISON.md) for comprehensive analysis
 
 ## 📦 Installation Requirements
 
