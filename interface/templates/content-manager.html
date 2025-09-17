@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎭 Content Manager - Día de Muertos</title>
+    <link href="/styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <script src="/js/socket.io.min.js"></script>
+</head>
+<body class="bg-dia-darker text-white min-h-screen">
+    <!-- Animated Background -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-dia-orange opacity-10 rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
+        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-dia-purple opacity-10 rounded-full mix-blend-multiply filter blur-xl animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute top-40 left-1/2 w-80 h-80 bg-dia-gold opacity-10 rounded-full mix-blend-multiply filter blur-xl animate-float" style="animation-delay: 1s;"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-10 bg-dia-dark/80 backdrop-blur-sm border-b border-dia-orange/20">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl animate-float">🎭</div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-dia-orange">Content Manager</h1>
+                        <p class="text-gray-400 text-sm">Review, Edit & Distribute AI Generated Content</p>
+                    </div>
+                </div>
+                <nav class="flex items-center space-x-4">
+                    <a href="/" class="px-4 py-2 rounded-lg bg-dia-dark hover:bg-dia-orange/20 transition-all">
+                        <i class="fas fa-home mr-2"></i>Dashboard
+                    </a>
+                    <div class="flex items-center space-x-2 text-sm">
+                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                        <span class="text-gray-300">@DRKV8R/ENDS Agent Active</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 container mx-auto px-6 py-8">
+        <!-- Content Library Header -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h2 class="text-3xl font-bold text-dia-orange mb-2">Content Library</h2>
+                    <p class="text-gray-400">Manage your AI-generated content and distribute to social platforms</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="uploadBtn" class="px-6 py-3 bg-dia-orange hover:bg-dia-orange/80 rounded-lg font-semibold transition-all">
+                        <i class="fas fa-upload mr-2"></i>Upload Content
+                    </button>
+                    <button id="bulkActionsBtn" class="px-6 py-3 bg-dia-purple hover:bg-dia-purple/80 rounded-lg font-semibold transition-all">
+                        <i class="fas fa-tasks mr-2"></i>Bulk Actions
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters and Search -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-6">
+                <div class="lg:col-span-2">
+                    <div class="relative">
+                        <input type="text" id="searchContent" placeholder="Search content..." 
+                               class="w-full bg-dia-dark border border-gray-600 rounded-lg px-4 py-3 pl-10 text-white focus:border-dia-orange focus:ring-1 focus:ring-dia-orange transition-all">
+                        <i class="fas fa-search absolute left-3 top-4 text-gray-400"></i>
+                    </div>
+                </div>
+                <div>
+                    <select id="contentTypeFilter" class="w-full bg-dia-dark border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-dia-orange focus:ring-1 focus:ring-dia-orange transition-all">
+                        <option value="">All Types</option>
+                        <option value="image">Images</option>
+                        <option value="video">Videos</option>
+                        <option value="animation">Animations</option>
+                    </select>
+                </div>
+                <div>
+                    <select id="statusFilter" class="w-full bg-dia-dark border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-dia-orange focus:ring-1 focus:ring-dia-orange transition-all">
+                        <option value="">All Status</option>
+                        <option value="pending">Pending Review</option>
+                        <option value="approved">Approved</option>
+                        <option value="published">Published</option>
+                        <option value="scheduled">Scheduled</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div id="contentGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+            <!-- Content items will be populated here -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex items-center justify-between">
+            <div class="text-gray-400">
+                Showing <span id="showingRange">1-12</span> of <span id="totalItems">48</span> items
+            </div>
+            <div class="flex items-center space-x-2">
+                <button class="px-3 py-2 bg-dia-dark hover:bg-dia-orange/20 rounded-lg transition-all">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <span class="px-4 py-2">Page 1 of 4</span>
+                <button class="px-3 py-2 bg-dia-dark hover:bg-dia-orange/20 rounded-lg transition-all">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Content Edit Modal -->
+    <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-dia-dark rounded-xl p-6 w-full max-w-4xl max-h-90vh overflow-y-auto">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-bold text-dia-orange">Edit Content</h3>
+                    <button id="closeEditModal" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div id="editModalContent">
+                    <!-- Edit form will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Distribution Modal -->
+    <div id="socialModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-dia-dark rounded-xl p-6 w-full max-w-3xl max-h-90vh overflow-y-auto">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-bold text-dia-orange">Distribute to Social Platforms</h3>
+                    <button id="closeSocialModal" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div id="socialModalContent">
+                    <!-- Social distribution form will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/content-manager.js"></script>
+</body>
+</html>
