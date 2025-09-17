@@ -216,6 +216,35 @@ VACE_GGUF_32GB=(
     "https://huggingface.co/QuantStack/Wan2.1_14B_VACE-GGUF/resolve/main/Wan2.1_14B_VACE-F16.gguf"
 )
 
+# WAN 2.2 GGUF Models - Enhanced Video Generation (NEW - Major Upgrade from WAN 2.1)
+WAN22_GGUF_12GB=(
+    "https://huggingface.co/QuantStack/Wan2.2-I2V-A14B-GGUF/resolve/main/wan2.2-i2v-a14b-Q3_K_S.gguf"
+    "https://huggingface.co/QuantStack/Wan2.2-I2V-A14B-GGUF/resolve/main/wan2.2-i2v-a14b-Q4_0.gguf"
+    "https://huggingface.co/QuantStack/Wan2.2-I2V-A14B-GGUF/resolve/main/wan2.2-i2v-a14b-Q4_K_M.gguf"
+    "https://huggingface.co/QuantStack/Wan2.2-T2V-A14B-GGUF/resolve/main/wan2.2-t2v-a14b-Q3_K_S.gguf"
+    "https://huggingface.co/QuantStack/Wan2.2-T2V-A14B-GGUF/resolve/main/wan2.2-t2v-a14b-Q4_0.gguf"
+)
+
+WAN22_GGUF_16GB=(
+    "https://huggingface.co/QuantStack/Wan2.2-I2V-A14B-GGUF/resolve/main/wan2.2-i2v-a14b-Q5_0.gguf"
+    "https://huggingface.co/QuantStack/Wan2.2-I2V-A14B-GGUF/resolve/main/wan2.2-i2v-a14b-Q5_K_M.gguf"
+    "https://huggingface.co/QuantStack/Wan2.2-T2V-A14B-GGUF/resolve/main/wan2.2-t2v-a14b-Q5_0.gguf"
+    "https://huggingface.co/QuantStack/Wan2.2-T2V-A14B-GGUF/resolve/main/wan2.2-t2v-a14b-Q5_K_M.gguf"
+)
+
+WAN22_GGUF_24GB=(
+    "https://huggingface.co/QuantStack/Wan2.2-I2V-A14B-GGUF/resolve/main/wan2.2-i2v-a14b-Q6_K.gguf"
+    "https://huggingface.co/QuantStack/Wan2.2-I2V-A14B-GGUF/resolve/main/wan2.2-i2v-a14b-Q8_0.gguf"
+    "https://huggingface.co/QuantStack/Wan2.2-T2V-A14B-GGUF/resolve/main/wan2.2-t2v-a14b-Q6_K.gguf"
+    "https://huggingface.co/QuantStack/Wan2.2-T2V-A14B-GGUF/resolve/main/wan2.2-t2v-a14b-Q8_0.gguf"
+)
+
+WAN22_GGUF_32GB=(
+    "https://huggingface.co/QuantStack/Wan2.2-I2V-A14B-GGUF/resolve/main/wan2.2-i2v-a14b-F16.gguf"
+    "https://huggingface.co/QuantStack/Wan2.2-T2V-A14B-GGUF/resolve/main/wan2.2-t2v-a14b-F16.gguf"
+    "https://huggingface.co/QuantStack/Wan2.2-VACE-Fun-A14B-GGUF/resolve/main/wan2.2-vace-fun-a14b-Q8_0.gguf"
+)
+
 # FLUX.1 VAE Models + VACE VAE
 VAE_MODELS=(
     "https://huggingface.co/stabilityai/sdxl-vae/resolve/main/diffusion_pytorch_model.safetensors"
@@ -224,8 +253,11 @@ VAE_MODELS=(
     # Additional VAE from GGUF script
     "https://huggingface.co/datasets/simwalo/FluxDevFP8/resolve/main/ae.safetensors"
     
-    # NEW: VACE VAE Models
+    # NEW: VACE VAE Models (WAN 2.1)
     "https://huggingface.co/simwalo/Wan2.1_SkyreelsV2/resolve/main/wan_2.1_vae.safetensors"
+    
+    # NEW: WAN 2.2 Enhanced VAE Models (Major Quality Improvement)
+    "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/vae/wan2.2_vae.safetensors"
 )
 
 # FLUX.1 CLIP Models + T5 GGUF Models (NEW)
@@ -297,8 +329,14 @@ LORA_MODELS=(
     "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors"
     "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plus_sd15_lora.safetensors"
     
-    # NEW: VACE Video LoRAs
+    # NEW: VACE Video LoRAs (WAN 2.1)
     "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan21_CausVid_14B_T2V_lora_rank32_v2.safetensors"
+    
+    # NEW: WAN 2.2 Lightning LoRAs - 4x Faster Generation (Major Speed Improvement)
+    "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors"
+    "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors"
+    "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/loras/wan2.2_t2v_lightx2v_4steps_lora_v1.1_high_noise.safetensors"
+    "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/loras/wan2.2_t2v_lightx2v_4steps_lora_v1.1_low_noise.safetensors"
 )
 
 CONTROLNET_MODELS=(
@@ -431,7 +469,7 @@ function provisioning_start() {
         "${WORKSPACE}/storage/stable_diffusion/models/unet" \
         "${FLUX_GGUF_24GB[@]}"
     
-    # Download VACE GGUF models
+    # Download VACE GGUF models (WAN 2.1)
     provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/unet" \
         "${VACE_GGUF_12GB[@]}"
@@ -444,6 +482,20 @@ function provisioning_start() {
     provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/unet" \
         "${VACE_GGUF_32GB[@]}"
+    
+    # Download WAN 2.2 GGUF models - Enhanced Video Generation
+    provisioning_get_models \
+        "${WORKSPACE}/storage/stable_diffusion/models/unet" \
+        "${WAN22_GGUF_12GB[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/storage/stable_diffusion/models/unet" \
+        "${WAN22_GGUF_16GB[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/storage/stable_diffusion/models/unet" \
+        "${WAN22_GGUF_24GB[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/storage/stable_diffusion/models/unet" \
+        "${WAN22_GGUF_32GB[@]}"
     
     provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/clip" \
