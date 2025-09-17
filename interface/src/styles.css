@@ -17,4 +17,55 @@
   .glass-card {
     @apply bg-white/5 backdrop-blur-lg border border-white/10;
   }
+
+  /* Platform badges */
+  .platform-badge {
+    @apply inline-flex items-center justify-center w-6 h-6 rounded-full text-xs;
+  }
+  
+  .platform-badge.instagram {
+    @apply bg-gradient-to-r from-purple-500 to-pink-500 text-white;
+  }
+  
+  .platform-badge.onlyfans {
+    @apply bg-gradient-to-r from-blue-500 to-cyan-500 text-white;
+  }
+  
+  .platform-badge.fansly {
+    @apply bg-gradient-to-r from-indigo-500 to-purple-500 text-white;
+  }
+  
+  .platform-badge.pornhub {
+    @apply bg-gradient-to-r from-orange-500 to-red-500 text-white;
+  }
+  
+  .platform-badge.twitter {
+    @apply bg-gradient-to-r from-blue-400 to-blue-600 text-white;
+  }
+  
+  .platform-badge.tiktok {
+    @apply bg-gradient-to-r from-pink-500 to-red-500 text-white;
+  }
+
+  /* Content grid styling */
+  .content-card {
+    @apply transform transition-all duration-300 hover:scale-105;
+  }
+
+  .content-card:hover {
+    @apply shadow-xl shadow-dia-orange/20;
+  }
+
+  /* Line clamp utility */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Modal styling */
+  .max-h-90vh {
+    max-height: 90vh;
+  }
 }

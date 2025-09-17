@@ -63,6 +63,66 @@ class DDMInterface {
             }
             res.json(deployment);
         });
+
+        // Content Management Routes
+        this.app.get('/content-manager', (req, res) => {
+            res.sendFile(path.join(__dirname, 'templates', 'content-manager.html'));
+        });
+
+        this.app.get('/api/content', async (req, res) => {
+            try {
+                const content = await this.getContentLibrary();
+                res.json(content);
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        });
+
+        this.app.post('/api/content/upload', async (req, res) => {
+            try {
+                // Handle file upload - simplified for demo
+                const result = await this.handleContentUpload(req);
+                res.json(result);
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        });
+
+        this.app.post('/api/content/update', async (req, res) => {
+            try {
+                const result = await this.updateContent(req.body);
+                res.json(result);
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        });
+
+        this.app.post('/api/content/publish', async (req, res) => {
+            try {
+                const result = await this.publishToSocialPlatforms(req.body);
+                res.json(result);
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        });
+
+        this.app.delete('/api/content/:id', async (req, res) => {
+            try {
+                const result = await this.deleteContent(req.params.id);
+                res.json(result);
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        });
+
+        this.app.post('/api/content/bulk-action', async (req, res) => {
+            try {
+                const result = await this.executeBulkAction(req.body);
+                res.json(result);
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        });
     }
 
     setupWebSocket() {
@@ -163,6 +223,188 @@ class DDMInterface {
 🌐 Open http://localhost:${this.port}
             `));
         });
+    }
+
+    // Content Management Methods
+    async getContentLibrary() {
+        // Mock data for demonstration - in production, this would query a database
+        return [
+            {
+                id: '1',
+                title: 'Día de Muertos Portrait 1',
+                description: 'Beautiful AI-generated portrait with Day of the Dead themes',
+                type: 'image',
+                status: 'approved',
+                rating: 'safe',
+                url: '/generated/portrait1.jpg',
+                thumbnail: '/generated/portrait1_thumb.jpg',
+                createdAt: new Date(Date.now() - 86400000 * 2).toISOString(),
+                views: 1250,
+                platforms: ['instagram'],
+                tags: ['portrait', 'dia-de-muertos', 'art']
+            },
+            {
+                id: '2',
+                title: 'Animated Skull Dance',
+                description: 'Mesmerizing animated sequence of dancing skulls',
+                type: 'video',
+                status: 'pending',
+                rating: 'safe',
+                url: '/generated/animation1.mp4',
+                thumbnail: '/generated/animation1_thumb.jpg',
+                createdAt: new Date(Date.now() - 86400000).toISOString(),
+                views: 890,
+                platforms: [],
+                tags: ['animation', 'skulls', 'dance']
+            },
+            {
+                id: '3',
+                title: 'Mystical Portrait Series',
+                description: 'Sensual and artistic portrait with mystical elements',
+                type: 'image',
+                status: 'approved',
+                rating: 'suggestive',
+                url: '/generated/portrait2.jpg',
+                thumbnail: '/generated/portrait2_thumb.jpg',
+                createdAt: new Date(Date.now() - 86400000 * 3).toISOString(),
+                views: 2340,
+                platforms: ['onlyfans', 'fansly'],
+                tags: ['portrait', 'mystical', 'artistic']
+            },
+            {
+                id: '4',
+                title: 'Adult Fantasy Art',
+                description: 'Artistic adult content with fantasy themes',
+                type: 'image',
+                status: 'published',
+                rating: 'adult',
+                url: '/generated/adult1.jpg',
+                thumbnail: '/generated/adult1_thumb.jpg',
+                createdAt: new Date(Date.now() - 86400000 * 4).toISOString(),
+                views: 5670,
+                platforms: ['onlyfans', 'pornhub'],
+                tags: ['fantasy', 'adult', 'artistic']
+            },
+            {
+                id: '5',
+                title: 'Halloween Special Video',
+                description: 'Special Halloween-themed video content',
+                type: 'video',
+                status: 'scheduled',
+                rating: 'safe',
+                url: '/generated/halloween.mp4',
+                thumbnail: '/generated/halloween_thumb.jpg',
+                createdAt: new Date().toISOString(),
+                views: 0,
+                platforms: [],
+                tags: ['halloween', 'special', 'video'],
+                publishDate: new Date(Date.now() + 86400000).toISOString()
+            },
+            {
+                id: '6',
+                title: 'Fashion Portrait Collection',
+                description: 'High-fashion inspired portrait series',
+                type: 'image',
+                status: 'approved',
+                rating: 'safe',
+                url: '/generated/fashion1.jpg',
+                thumbnail: '/generated/fashion1_thumb.jpg',
+                createdAt: new Date(Date.now() - 86400000 * 5).toISOString(),
+                views: 3450,
+                platforms: ['instagram', 'twitter'],
+                tags: ['fashion', 'portrait', 'style']
+            },
+            {
+                id: '7',
+                title: 'Artistic Nude Study',
+                description: 'Tasteful artistic nude photography',
+                type: 'image',
+                status: 'published',
+                rating: 'adult',
+                url: '/generated/nude1.jpg',
+                thumbnail: '/generated/nude1_thumb.jpg',
+                createdAt: new Date(Date.now() - 86400000 * 6).toISOString(),
+                views: 8920,
+                platforms: ['onlyfans', 'fansly'],
+                tags: ['artistic', 'nude', 'photography']
+            },
+            {
+                id: '8',
+                title: 'Dance Performance Video',
+                description: 'Captivating dance performance with special effects',
+                type: 'video',
+                status: 'approved',
+                rating: 'suggestive',
+                url: '/generated/dance1.mp4',
+                thumbnail: '/generated/dance1_thumb.jpg',
+                createdAt: new Date(Date.now() - 86400000 * 7).toISOString(),
+                views: 2150,
+                platforms: ['tiktok'],
+                tags: ['dance', 'performance', 'entertainment']
+            }
+        ];
+    }
+
+    async handleContentUpload(req) {
+        // Mock implementation - in production, handle actual file uploads
+        console.log('Content upload requested');
+        return { success: true, message: 'Files uploaded successfully' };
+    }
+
+    async updateContent(contentData) {
+        // Mock implementation - in production, update database
+        console.log('Content update requested:', contentData);
+        
+        // Emit update to connected clients
+        this.io.emit('content-updated', contentData);
+        
+        return { success: true, message: 'Content updated successfully' };
+    }
+
+    async publishToSocialPlatforms(publishData) {
+        console.log('Social media publish requested:', publishData);
+        
+        const { contentId, platforms, customCaption, publishOption, scheduleDate } = publishData;
+        
+        // Mock platform publishing
+        for (const platform of platforms) {
+            setTimeout(() => {
+                this.io.emit('social-publish-status', {
+                    contentId,
+                    platform,
+                    status: 'Published successfully',
+                    success: true
+                });
+            }, Math.random() * 2000 + 1000); // Random delay 1-3 seconds
+        }
+        
+        return { 
+            success: true, 
+            message: `Content ${publishOption === 'now' ? 'published' : 'scheduled'} to ${platforms.length} platform(s)` 
+        };
+    }
+
+    async deleteContent(contentId) {
+        // Mock implementation - in production, delete from database and storage
+        console.log('Content deletion requested:', contentId);
+        return { success: true, message: 'Content deleted successfully' };
+    }
+
+    async executeBulkAction(actionData) {
+        console.log('Bulk action requested:', actionData);
+        
+        const { action, contentIds } = actionData;
+        
+        // Mock bulk action execution
+        setTimeout(() => {
+            this.io.emit('bulk-action-complete', {
+                action,
+                contentIds,
+                success: true
+            });
+        }, 2000);
+        
+        return { success: true, message: `Bulk action "${action}" executed for ${contentIds.length} items` };
     }
 }
 
